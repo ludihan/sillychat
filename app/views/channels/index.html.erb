@@ -4,13 +4,12 @@
 
 <h1>Channels</h1>
 
+<%= link_to "New channel", new_channel_path %>
+
 <div id="channels">
   <% @channels.each do |channel| %>
-    <%= render channel %>
     <p>
-      <%= link_to "Show this channel", channel %>
-    </p>
+      <%= link_to channel.name, channel %>
+    <p>
   <% end %>
 </div>
-
-<%= link_to "New channel", new_channel_path %>

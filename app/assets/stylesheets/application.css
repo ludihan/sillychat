@@ -8,3 +8,10 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+#channels {
+    margin-top: 2em;
+}
+#channels > p {
+    margin: 0;
+    margin-top: 0.1em;
+}
