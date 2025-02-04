@@ -8,3 +8,5 @@
 
   <%= button_to "Destroy this channel", @channel, method: :delete %>
 </div>
+
+<%= render "messages/messages", channel: @channel %>

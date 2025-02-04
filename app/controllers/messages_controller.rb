@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
   end
 
   private
-    def set_post
+    def set_channel
       @channel = Channel.find(params[:channel_id])
     end
 end

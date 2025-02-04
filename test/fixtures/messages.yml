@@ -2,10 +2,8 @@
 
 one:
   content: MyText
-  user: one
   channel: one
 
 two:
   content: MyText
-  user: two
   channel: two

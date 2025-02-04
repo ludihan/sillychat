@@ -49,6 +49,7 @@ class ChannelsController < ApplicationController
 
   # DELETE /channels/1 or /channels/1.json
   def destroy
+    @channel.messages.all.destroy_all
     @channel.destroy!
 
     respond_to do |format|

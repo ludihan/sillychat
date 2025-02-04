@@ -1,0 +1,5 @@
+<%= form_with model: [ channel, Message.new ], data: { turbo_frame: "new_message"} do |form| %>
+  Message:<br>
+  <%= form.text_area :content, size: "20x5" %><br>
+  <%= form.submit %>
+<% end %>
