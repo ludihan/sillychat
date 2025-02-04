@@ -61,7 +61,11 @@ class ChannelsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_channel
-      @channel = Channel.find(params.expect(:id))
+      begin
+        @channel = Channel.find(params.expect(:id))
+      rescue ActiveRecord::RecordNotFound => e
+        redirect_to "/404"
+      end
     end
 
     # Only allow a list of trusted parameters through.
