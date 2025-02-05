@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get "/signin", to: "sessions#new"
+  get "/signup", to: "users#new"
+
+  post "/signin", to: "sessions#create"
+  post "/signup", to: "users#create"
+
+  delete "/signout", to: "sessions#destroy"
+
   resources :channels do
     resources :messages
   end

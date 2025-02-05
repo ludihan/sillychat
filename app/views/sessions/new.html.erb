@@ -1,0 +1,11 @@
+<h1>Sign in</h1>
+<p style="color: red"><%= notice %></p>
+<%= form_for (:session) do |f| %>
+  <%= f.label :name, 'Enter your name' %>
+  <%= f.text_field :name, autocomplete: 'off' %>
+  <%= f.label :password, 'Enter your password' %>
+  <%= f.text_field :password, autocomplete: 'off' %>
+  <%= f.submit 'Sign in' %>
+<% end %>
+
+<p>Don't have a account? <%= link_to "Sign up", "/signup" %></p>

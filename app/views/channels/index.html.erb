@@ -1,8 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
+<h5>Logged as <%= @current_user.name %></h5>
+
 <% content_for :title, "Channels" %>
 
-<h1>Channels</h1>
+<h4>Channels</h4>
 
 <%= link_to "New channel", new_channel_path %>
 

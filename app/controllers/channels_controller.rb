@@ -3,7 +3,11 @@ class ChannelsController < ApplicationController
 
   # GET /channels or /channels.json
   def index
-    @channels = Channel.all
+    @current_user = current_user
+    redirect_to "/signin" unless @current_user
+
+    @channels = Channel.public_channels
+    @users = User.all_except(@current_user)
   end
 
   # GET /channels/1 or /channels/1.json
