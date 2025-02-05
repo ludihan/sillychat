@@ -1,16 +1,36 @@
 class SessionsController < ApplicationController
   def create
-    user = User.find_by(name: params[:session][:name],
-                        password: params[:session][:password])
+    user = session_params
+    name = user[:name]
+    password = user[:password]
+    if name.empty? or password.empty?
+      redirect_to "/signin", notice: "You need to fill your name and password"
+    end
+
+    user = User.find_by(name: params[:session][:name])
+
     if user
-      log_in(user)
+      user = User.find_by(name: params[:session][:name],
+                          password: params[:session][:password])
+      if user
+        log_in(user)
+      else
+        redirect_to "/signin", notice: "Wrong password"
+      end
     else
-      redirect_to root_path, notice: "We couldn't find your account, check your name and password"
+      redirect_to "/signin", notice: "We couldn't find your account"
     end
   end
 
   def destroy
     log_out if logged_in?
-    redirect_to root_path
+    respond_to do |format|
+      format.html { redirect_to root_path }
+    end
   end
+
+  private
+    def session_params
+      params.expect(session: [ :name, :password ])
+    end
 end

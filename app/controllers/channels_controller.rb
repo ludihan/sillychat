@@ -30,10 +30,8 @@ class ChannelsController < ApplicationController
     respond_to do |format|
       if @channel.save
         format.html { redirect_to @channel, notice: "Channel was successfully created." }
-        format.json { render :show, status: :created, location: @channel }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @channel.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -43,10 +41,8 @@ class ChannelsController < ApplicationController
     respond_to do |format|
       if @channel.update(channel_params)
         format.html { redirect_to @channel, notice: "Channel was successfully updated." }
-        format.json { render :show, status: :ok, location: @channel }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @channel.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -58,7 +54,6 @@ class ChannelsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to channels_path, status: :see_other, notice: "Channel was successfully destroyed." }
-      format.json { head :no_content }
     end
   end
 

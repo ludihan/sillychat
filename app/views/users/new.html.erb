@@ -1,11 +1,11 @@
 <h1>Create your account</h1>
-<p style="color: red"><%= notice %></p>
+<p style="color: yellow"><%= notice %></p>
 <%= form_with model: User.new do |f| %>
   <%= f.label :name, 'Enter your name' %>
   <%= f.text_field :name, autocomplete: 'off' %>
   <%= f.label :password, 'Enter your password' %>
   <%= f.text_field :password, autocomplete: 'off' %>
-  <%= f.submit 'Sign in' %>
+  <%= f.submit 'Create account' %>
 <% end %>
 
 <p>Already have a account? <%= link_to "Sign in", "/signin" %></p>

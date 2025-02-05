@@ -3,7 +3,9 @@ class MessagesController < ApplicationController
 
   def create
     @channel.messages.create! params.expect(message: [ :content ])
-    redirect_to @channel
+    respond_to do |format|
+      format.html { redirect_to @channel }
+    end
   end
 
   private
