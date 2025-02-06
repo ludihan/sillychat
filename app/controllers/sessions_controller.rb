@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
     name = user[:name]
     password = user[:password]
     if name.empty? or password.empty?
-      redirect_to "/signin", notice: "You need to fill your name and password"
+      redirect_to "/signin", notice: "You need to fill your name and password."
     end
 
     user = User.find_by(name: params[:session][:name])
@@ -15,10 +15,10 @@ class SessionsController < ApplicationController
       if user
         log_in(user)
       else
-        redirect_to "/signin", notice: "Wrong password"
+        redirect_to "/signin", notice: "Wrong password."
       end
     else
-      redirect_to "/signin", notice: "We couldn't find your account"
+      redirect_to "/signin", notice: "We couldn't find your account."
     end
   end
 

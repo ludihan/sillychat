@@ -5,16 +5,16 @@ class UsersController < ApplicationController
     password = user[:password]
     respond_to do |format|
       if name.empty? or password.empty?
-        format.html { redirect_to "/signup", notice: "You need to fill your name and password" }
+        format.html { redirect_to "/signup", notice: "You need to fill your name and password." }
       end
 
       user_found = User.find_by(name: name)
       if user_found
-        format.html { redirect_to "/signup", notice: "User already exists" }
+        format.html { redirect_to "/signup", notice: "User already exists." }
       else
         @user = User.new(user)
         if @user.save
-          format.html { redirect_to "/signup", notice: "Account created successfully" }
+          format.html { redirect_to "/signin", notice: "Account created successfully, you can now login." }
         else
           format.html { render :new, status: :unprocessable_entity }
         end
