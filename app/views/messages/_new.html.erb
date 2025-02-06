@@ -1,5 +1,6 @@
-<%= form_with model: [ channel, Message.new ] do |form| %>
-  Message:<br>
-  <%= form.text_area :content, size: "20x5" %><br>
-  <%= form.submit %>
-<% end %>
+<div>
+  <%= form_with(model: [@channel ,@message], remote: true) do |f| %>
+    <%= f.text_field :content, id: 'chat-text', autocomplete: 'off' %>
+    <%= f.submit data: { disable_with: false } %>
+  <% end %>
+</div>

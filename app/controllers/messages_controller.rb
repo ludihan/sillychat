@@ -1,15 +1,11 @@
 class MessagesController < ApplicationController
-  before_action :set_channel
-
   def create
-    @channel.messages.create! params.expect(message: [ :content ])
-    respond_to do |format|
-      format.html { redirect_to @channel }
-    end
+    @current_user = current_user
+    @message = @current_user.messages.create(content: msg_params[:content], channel_id: params[:channel_id])
   end
 
   private
-    def set_channel
-      @channel = Channel.find(params[:channel_id])
+    def msg_params
+      params.require(:message).permit(:content)
     end
 end

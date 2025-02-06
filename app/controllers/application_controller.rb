@@ -6,7 +6,11 @@ class ApplicationController < ActionController::Base
 
   def current_user
     if session[:user_id]
-      @current_user  = User.find(session[:user_id])
+      begin
+        @current_user  = User.find(session[:user_id])
+      rescue ActiveRecord::RecordNotFound
+        redirect_to "/signin"
+      end
     end
   end
 

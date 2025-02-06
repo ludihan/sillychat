@@ -1,8 +1,6 @@
-<%= turbo_stream_from @channel %>
+<p style="color: yellow"><%= notice %></p>
 
-<p style="color: green"><%= notice %></p>
-
-<%= render @channel %>
+<h1><%= @channel.name %></h1>
 
 <div>
   <%= link_to "Edit this channel", edit_channel_path(@channel) %> |
@@ -11,4 +9,5 @@
   <%= button_to "Destroy this channel", @channel, method: :delete %>
 </div>
 
+<%= turbo_stream_from @channel %>
 <%= render "messages/messages", channel: @channel %>

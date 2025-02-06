@@ -6,12 +6,17 @@ class ChannelsController < ApplicationController
     @current_user = current_user
     redirect_to "/signin" unless @current_user
 
-    @channels = Channel.public_channels
+    @channels = Channel.all
     @users = User.all_except(@current_user)
   end
 
   # GET /channels/1 or /channels/1.json
   def show
+    @current_user = current_user
+    @channel = Channel.find(params[:id])
+    @channels = Channel.all
+    @users = User.all_except(@current_user)
+    @message = Message.new
   end
 
   # GET /channels/new
