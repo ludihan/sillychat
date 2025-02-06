@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   get "/signin", to: "sessions#new"
-  get "/signup", to: "users#new"
-
   post "/signin", to: "sessions#create"
+
+  get "/signup", to: "users#new"
   post "/signup", to: "users#create"
 
   delete "/signout", to: "sessions#destroy"

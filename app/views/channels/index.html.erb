@@ -1,19 +1,29 @@
 <p style="color: green"><%= notice %></p>
 
+<% content_for :title, "Sillychat" %>
+
 <h5>Logged as <%= @current_user.name %></h5>
 
 <%= link_to "Log off", "/signin" %>
 
-<% content_for :title, "Channels" %>
+<div style="display:flex">
 
-<h4>Channels</h4>
+  <div style="flex:1">
+    <h4> Users </h4>
+    <%= turbo_stream_from "users" %>
+    <div id="users">
+      <%= render @users %>
+    </div>
+  </div>
 
-<%= link_to "New channel", new_channel_path %>
+  <div style="flex:1">
+    <h4>Channels</h4>
+    <%= link_to "New channel", new_channel_path %>
+    <hr>
+    <%= turbo_stream_from "channels" %>
+    <div id="channels">
+      <%= render @channels %>
+    </div>
+  </div>
 
-<div id="channels">
-  <% @channels.each do |channel| %>
-    <p>
-      <%= link_to channel.name, channel %>
-    <p>
-  <% end %>
 </div>

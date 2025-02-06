@@ -1,7 +1,3 @@
-<div id="<%= dom_id channel %>">
-  <p>
-    <strong>Name:</strong>
-    <%= channel.name %>
-  </p>
-
+<div id="channel_<%= channel.id %>">
+  <%= link_to channel.name, channel %>
 </div>
