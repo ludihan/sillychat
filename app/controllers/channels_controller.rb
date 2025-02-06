@@ -67,8 +67,8 @@ class ChannelsController < ApplicationController
     def set_channel
       begin
         @channel = Channel.find(params.expect(:id))
-      rescue ActiveRecord::RecordNotFound => e
-        redirect_to "/404"
+      rescue ActiveRecord::RecordNotFound
+        redirect_to "/channels"
       end
     end
 
